@@ -5,7 +5,8 @@
   "projects": {
     "unobtainium": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -24,12 +25,20 @@
               {
                 "glob": "**/*",
                 "input": "public"
-              }
+              },
+              "src/favicon.ico",
+              "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "@angular/material/prebuilt-themes/azure-blue.css",
+              "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "stylePreprocessorOptions": {
+              "sass": {
+                  "silenceDeprecations": ["color-functions", "global-builtin", "import", "mixed-decls"]
+                }
+            }
           },
           "configurations": {
             "production": {
@@ -82,9 +91,12 @@
               {
                 "glob": "**/*",
                 "input": "public"
-              }
+              },
+              "src/favicon.ico",
+              "src/assets"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/azure-blue.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -92,5 +104,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

@@ -1,0 +1,17 @@
+<h1 mat-dialog-title class="title-row">
+    Aufgabe Löschen
+</h1>
+<mat-dialog-content>
+    <h3 class="field-title">Lied</h3>
+    <div>{{aTodo.song?.name}}</div>
+    <h3 class="field-title">Beschreibung</h3>
+    <div>{{aTodo.description}}</div>
+    <h3 class="field-title">Verantwortliche</h3>
+    <mat-chip-listbox aria-label="Verantwortlichex">
+        <mat-chip-option *ngFor="let member of aTodo.responsibles" selectable="false">{{member.name}}</mat-chip-option>
+    </mat-chip-listbox>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button (click)="cancel()">Abbrechen</button>
+    <button mat-button [mat-dialog-close]="aTodo" cdkFocusInitial>Löschen</button>
+</mat-dialog-actions>

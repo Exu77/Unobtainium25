@@ -1,0 +1,47 @@
+/**
+* Generated theme by Material Theme Generator
+* https://materialtheme.arcsine.dev
+* Fork at: https://materialtheme.arcsine.dev/?c=YHBhbGV0dGU$YHByaW1hcnk$YF48IzE4M2Q1YyIsIj9lcjwjYmFjNWNlIiwiO2VyPCMwZTI3NDF$LCIlPmBePCMyMzIyMjIiLCI~ZXI8IzQxNDE0MSIsIjtlcjwjMTUxNDE0fiwid2Fybj5gXjwjZmYwMDAwIiwiP2VyPCNmZmIzYjMiLCI7ZXI8I2ZmMDAwMH4sIj9UZXh0PCMwMDAwMDAiLCI~PTwjZmFmYWZhIiwiO1RleHQ8I2ZmZmZmZiIsIjs9PCMxODE4MTh$LCJmb250cz5bYEA8KC00fixgQDwoLTN$LGBAPCgtMn4sYEA8KC0xfixgQDxoZWFkbGluZX4sYEA8dGl0bGV$LGBAPHN1YiktMn4sYEA8c3ViKS0xfixgQDxib2R5LTJ$LGBAPGJvZHktMX4sYEA8YnV0dG9ufixgQDxjYXB0aW9ufixgQDxpbnB1dCIsInNpemU$bnVsbH1dLCJpY29uczxGaWxsZWQiLCI~bmVzcz5mYWxzZSwidmVyc2lvbj4xM30=
+*/
+
+@use '@angular/material' as mat;
+@use './_theme-colors' as my-theme;
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+
+// Fonts
+@import 'https://fonts.googleapis.com/icon?family=Material+Icons';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+     
+:root {
+  @include mat.theme((
+    color: (
+      primary: my-theme.$primary-palette,
+      tertiary: my-theme.$tertiary-palette,
+      theme-type: dark,
+    ),
+    typography: Roboto,
+    density: 0
+  ));
+
+  @include mat.badge-overrides((
+    background-color: yellow,
+  ));
+
+  // @include mat.card-overrides((
+  //   subtitle-text-color: orange,
+  //   elevated-container-color: rgb(73, 69, 78),
+  // ));
+
+  // @include mat.chips-overrides((
+  //   outline-color: white,
+  //   label-text-color: white,
+  //   disabled-outline-color: darkgrey,
+  //   selected-label-text-color: white,
+  //   disabled-label-text-color: darkgrey,
+  //   focus-state-layer-color: green,
+
+  //   disabled-container-opacity: 100
+  // ));
+}

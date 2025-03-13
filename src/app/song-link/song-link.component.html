@@ -1,0 +1,33 @@
+<div class="app-link mt-2.5">
+    <h2 class="title-row flex justify-between cursor-pointer hover:font-bold" (click)="showData = !showData">
+        <div>
+            Links
+        </div>
+        <div class="title-part-left">
+            <div class="material-icons" (click)="openEditDialog({song: songFolder()}, $event)">
+                add
+            </div>
+        </div>
+    </h2>
+    <div class="link-group flex flex-wrap gap-4"  *ngIf="showData">
+        <div *ngFor="let aLink of filteredLinks">
+            <mat-card class="link-card w-fit cursor-pointer min-w-40" [class.do-hover]="mouseOverEnabled4Ctrl" (click)="openLink(aLink?.link)">
+                <mat-card-content>
+                    <div class="link-card-control mb-2 flex justify-around">
+                        <button mat-mini-fab aria-label="edit"  (click)="openEditDialog(aLink, $event)" 
+                                (mouseenter)="mouseOverEnabled4Ctrl = false" (mouseleave)="mouseOverEnabled4Ctrl = true">
+                            <div class="material-icons">edit</div>
+                          </button>
+                        <button mat-mini-fab aria-label="delete" (click)="openDeletetDialog(aLink, $event)" 
+                                (mouseenter)="mouseOverEnabled4Ctrl = false" (mouseleave)="mouseOverEnabled4Ctrl = true">
+                            <div class="material-icons">delete</div>
+                          </button>
+                    </div>
+                    <div class="link-card-link flex justify-around">
+                        <div>{{aLink.name}}</div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div> 
+</div>

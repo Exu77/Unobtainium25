@@ -1,0 +1,18 @@
+.song-list {
+    margin-top: 10px;
+    .header-row {
+      &-text {
+        margin-top: 8px;
+        margin-right: 10px;
+      }
+    }
+
+    .mat-accordion.mat-expansion-panel .mat-expansion-panel-header {
+        height: 16px;
+        color: red;
+        //top: 2px;
+    }
+    .mat-badge-small.mat-badge-after .mat-badge-content {
+        //right: -20px;
+    }
+  }

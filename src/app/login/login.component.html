@@ -1,0 +1,15 @@
+<div class="login-component">
+    <div class="card-body">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="password">Password v1.1</label>
+                <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && getFormControlls.password.errors }" />
+                <div *ngIf="submitted && getFormControlls.password.errors" class="invalid-feedback">
+                    <div *ngIf="getFormControlls.password.errors.required">Password is required</div>
+                </div>
+                <button mat-raised-button>Login</button>
+            </div>
+            <div *ngIf="error" class="error">{{error}}</div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+<div class="song-list">
+    <div class="header-row flex">
+      <h1 class="header-row-text">Lieder</h1>
+      <div class="">
+        <mat-form-field class="search-field" appearance="fill">
+          <mat-label>Suche</mat-label>
+          <input matInput [(ngModel)] = "searchTerm" (ngModelChange) = "filterSongs()">
+        </mat-form-field>
+      </div>
+  </div>
+    @if (isLoading()) {
+        <div><mat-spinner></mat-spinner></div>
+    } @else {
+        <mat-accordion class="example-headers-align">
+            @for (aSong of filteredSongs(); track aSong.id) {
+                <mat-expansion-panel  hideToggle>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title class="justify-between">
+                        <div [matBadge]="todoCounter[aSong.id]" 
+                            [matBadgeHidden]="!todoCounter[aSong.id]" 
+                            [matBadgeOverlap]="false"
+                            matBadgeSize="medium"
+                            MatBadgePosition="after"
+                        >
+                            {{aSong.name}}
+                        </div>
+                        <app-song-level class="hidden sm:block" [songFolder]="aSong"></app-song-level>
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <ng-template matExpansionPanelContent>
+                        <app-song [songFolder]="aSong"></app-song>
+                    </ng-template>
+                </mat-expansion-panel>
+            }
+        </mat-accordion>
+    }
+        <!--<a [routerLink]="['/song',aSong.name]" routerLinkActive="active">{{aSong.name}}</a>-->
+      <!--app-track *ngFor="let i of songs" [song]="i" ></app-track-->
+  </div>
+  

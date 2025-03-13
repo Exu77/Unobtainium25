@@ -1,0 +1,16 @@
+<h1 mat-dialog-title class="title-row">
+    Link Löschen
+</h1>
+<mat-dialog-content>
+    <h3 class="field-title">Lied</h3>
+    <div>{{aTodo.song?.name}}</div>
+    <h3 class="field-title">Name</h3>
+    <div>{{aTodo.name}}</div>
+    <h3 class="field-title">Link</h3>
+    <div>{{aTodo.link}}</div>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button (click)="cancel()">Abbrechen</button>
+    <button mat-button [mat-dialog-close]="aTodo" cdkFocusInitial>Löschen</button>
+</mat-dialog-actions>
+ 

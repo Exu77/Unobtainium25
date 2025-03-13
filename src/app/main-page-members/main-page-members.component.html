@@ -1,0 +1,15 @@
+<div class="main-page-members p-5 lg:p-20">
+    <div class="title flex justify-between mb-4">
+        <h1>Mitglieder Zone</h1>
+        <div class="menu-right flex">
+            <a [href]="helpFile?.webViewLink" target="_blank" class="material-icons help-link">help</a>
+            <div class="material-icons" (click)="reload()">refresh</div>
+        </div>
+    </div>
+
+    <div class="mb-4">
+        <app-todo></app-todo>
+    </div>
+    <app-song-list></app-song-list>
+  </div>
+  

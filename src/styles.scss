@@ -1,0 +1,118 @@
+/* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+@import 'styles/material_style';
+
+@layer base {
+  h1 {
+    font-size: var(--text-2xl);
+    font-weight: bold;
+    &.un-clickable:hover {
+      filter: blur(2px);
+    }
+  }
+  h2 {
+    font-size: var(--text-xl);
+    font-weight: bold;
+    .un-clickable:hover {
+      filter: blur(2px);
+    }
+  }
+
+  h3 {
+    font-size: var(--text-l);
+    font-weight: bold;
+  }
+
+  a {
+    &:hover {
+      font-weight: bold;
+    }
+  }
+
+  .un-clickable:hover {
+    cursor: pointer;
+    filter: blur(1px);
+    font-weight: bold;
+  }
+}
+
+html, body { 
+  height: 100%;  
+  background: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
+  margin: 0; 
+  font-family: Roboto, "Helvetica Neue", sans-serif; 
+
+  // a {
+  //   &.material-icons {
+  //     color: white;
+  //     text-decoration: none;
+  //   }
+  // }
+
+ .material-icons {
+    user-select: none;
+    cursor: pointer;
+    padding: 5px;
+
+    &:hover {
+        font-weight: bolder;
+    }
+  } 
+}
+
+// html {
+//   h1 { 
+//     display: block;
+//     font-size: 2em;
+//     margin-top: 0.67em;
+//     margin-bottom: 0.67em;
+//     margin-left: 0;
+//     margin-right: 0;
+//     font-weight: bold;
+//   }
+//   h2 {
+//     display: block;
+//     font-size: 1.5em;
+//     margin-top: 0.83em;
+//     margin-bottom: 0.83em;
+//     margin-left: 0;
+//     margin-right: 0;
+//     font-weight: bold;
+//   }
+//   h3 { 
+//     display: block;
+//     font-size: 1.17em;
+//     margin-top: 1em;
+//     margin-bottom: 1em;
+//     margin-left: 0;
+//     margin-right: 0;
+//     font-weight: bold;
+//   }
+//   h4 { 
+//     display: block;
+//     margin-top: 1.33em;
+//     margin-bottom: 1.33em;
+//     margin-left: 0;
+//     margin-right: 0;
+//     font-weight: bold;
+//   }
+//   h5 { 
+//     display: block;
+//     font-size: .83em;
+//     margin-top: 1.67em;
+//     margin-bottom: 1.67em;
+//     margin-left: 0;
+//     margin-right: 0;
+//     font-weight: bold;
+//   }
+//   h6 { 
+//     display: block;
+//     font-size: .67em;
+//     margin-top: 2.33em;
+//     margin-bottom: 2.33em;
+//     margin-left: 0;
+//     margin-right: 0;
+//     font-weight: bold;
+//   }
+// }

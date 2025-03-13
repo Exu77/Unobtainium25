@@ -1,0 +1,22 @@
+.main-page {
+    margin: 0 auto;
+    // padding: 20px;
+    background-color: black;
+
+    .tile-content {
+        padding: 0 0 20px 0;
+        width: 100%;
+    }
+
+    .card-content {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        text-align: center;
+        margin: 10px 0;
+    }
+
+    mat-card-header {
+        justify-content: center;
+    }
+}

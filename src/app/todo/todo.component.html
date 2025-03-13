@@ -1,0 +1,93 @@
+<div class="app-todo">
+    <div class="title-row flex justify-between mb-2">
+        <div class="flex gap-4">
+            <div class="mt-2">
+                <h1 class="un-clickable" [matBadge]="filteredTodos.length" 
+                        [matBadgeHidden]="!filteredTodos.length" 
+                        [matBadgeOverlap]="true"
+                        matBadgeSize="medium"
+                        MatBadgePosition="after"
+                        (click)="showData = !showData"
+                >
+                    Aufgaben
+                </h1>
+            </div>
+            <div>
+                @if (showData) {
+                    <mat-form-field class="search-field" appearance="fill">
+                    <mat-label>Suche</mat-label>
+                    <input matInput [(ngModel)] = "searchTerm" (ngModelChange) = "filterSearchTerm()">
+                    </mat-form-field>
+                }
+            </div>
+        </div>
+        <div class="title-part-left flex">
+            @if (showData) {
+                <div class="xs:hidden sm: block">
+                    <mat-chip-listbox  [hideSingleSelectionIndicator]="true" [multiple]="false" aria-label="Filter Members">
+                        @for(member of bandMembers; track member.name) {
+                            <mat-chip-option
+                                [highlighted]="!!selectedBandMembers[member.name]"
+                                [selected]="!!selectedBandMembers[member.name]"
+                                [selectable]="true"
+                                [id]="member.name"
+                                (click)="filterClickBandMember(member)"
+                            >
+                                {{member.name}}
+                            </mat-chip-option>
+                        }
+                    </mat-chip-listbox >
+                </div>
+                <div class="material-icons" (click)="openEditDialog({
+                    description: null,
+                    responsibles: null,
+                    song: songFolder()
+                    })">
+                    add
+                </div>
+            }
+        </div>
+    </div>
+
+    @if (showData) {
+        <table mat-table [dataSource]="filteredTodos" class="mat-elevation-z8 w-full">
+
+            <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+        
+            <!-- Liedname Column -->
+            <ng-container matColumnDef="song">
+            <th mat-header-cell *matHeaderCellDef> Lied </th>
+            <td mat-cell *matCellDef="let element"> {{element.song?.name}} </td>
+            </ng-container>
+        
+            <!-- Beschreibung Column -->
+            <ng-container matColumnDef="descr">
+                <th mat-header-cell *matHeaderCellDef> Beschreibung </th>
+                <td mat-cell *matCellDef="let element"> {{element.description!}} </td>
+            </ng-container>
+        
+            <!-- Verantwortliche Column -->
+            <ng-container class="xs:hidden sm:block" matColumnDef="resp">
+                <th mat-header-cell *matHeaderCellDef> Verantwortliche </th>
+                <td mat-cell *matCellDef="let element">
+                    <mat-chip-set aria-label="Fish selection">
+                        <mat-chip *ngFor="let member of element.responsibles" [highlighted]="selectedBandMembers[member.name]">{{member.name}}</mat-chip>
+                    </mat-chip-set>
+                </td>
+            </ng-container>
+        
+            <!-- Action Column -->
+            <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element">
+                <span class="material-icons"  (click)="openEditDialog(element)">edit</span>
+                <span class="material-icons" (click)="openDeletetDialog(element)">delete</span>
+            </td>
+            </ng-container>
+        
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    }
+</div>

@@ -1,0 +1,30 @@
+<h1 mat-dialog-title class="title-row">
+    Ultimate Guitar Link anpassen
+</h1>
+<form [formGroup]="form"  (ngSubmit)="submitForm()">
+    <mat-dialog-content>
+        <mat-form-field class="select-input" appearance="fill">
+            <mat-label>Lied</mat-label>
+            <mat-select formControlName="song"
+                    [compareWith]="compareSongFolders"
+            >
+                <mat-option>None</mat-option>
+                <mat-option *ngFor="let aSong of songFolders$ | async" [value]="aSong">
+                    {{aSong.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field class="select-input" appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name">
+        </mat-form-field>
+        <mat-form-field class="select-input" appearance="fill">
+            <mat-label>Link</mat-label>
+            <input matInput formControlName="link"> 
+        </mat-form-field>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <button mat-button (click)="cancel()">Abbrechen</button>
+        <button mat-button type="submit" [disabled]="form.invalid" cdkFocusInitial>Speichern</button>
+    </mat-dialog-actions>
+</form>

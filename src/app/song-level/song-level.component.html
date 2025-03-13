@@ -1,0 +1,25 @@
+<div class="song-level flex justify-between text-colour-darkgreen">
+    <div class="star-group flex">
+        <div fxShow.xs="false" class="star-container" 
+                *ngFor="let theIdx of [1,2,3,4,5]" 
+                (click)="updateProficiency($event, theIdx)"
+                [class.alert-medium]="currentSongLevel().proficiency! <= 4 && currentSongLevel().proficiency! > 2"
+                [class.alert-red]="currentSongLevel().proficiency! <= 2"
+        >
+            <span class="material-icons" *ngIf="theIdx <= currentSongLevel().proficiency!">grade</span>
+            <span class="material-icons"*ngIf="theIdx > currentSongLevel().proficiency!">star_border</span>
+        </div>
+    </div>
+    <div class="last-played-group flex" 
+            [class.alert-medium]="daysBetween > 60 && daysBetween < 120"
+            [class.alert-red]="daysBetween >= 120"
+    >
+        <div class="last-played-text">{{daysBetween}}</div>
+        <div class="material-icons" (click)="updateLastPlayed($event)">play_circle</div>
+        <div class="material-icons" (click)="openDatePicer(picker, $event)">calendar_today</div>
+        <mat-form-field style="width:1px;visibility:hidden;height:1px">
+            <input matInput [matDatepicker]="picker" (dateChange)="updateLastPlayedPicker($event)"/>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+    </div>
+</div>
