@@ -14,7 +14,8 @@
     "watch-node": "nodemon dist/server/server.js",
     "postinstall": "tsc",
     "dev": "concurrently \"tsc -w\" \"nodemon dist/server/server.js\"",
-    "watch-ts": "tsc -w"
+    "watch-ts": "tsc -w",
+    "heroku-postbuild": "ng build --configuration production && tsc"
   },
   "private": true,
   "dependencies": {
