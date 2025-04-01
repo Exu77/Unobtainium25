@@ -1,6 +1,7 @@
 import { GoogleApiHelper } from './googleApi/google-api-helper';
 import { AuthenticationRoutes } from './authentication/authentication.routes';
 import express from "express";
+import fs from "fs";
 import { SongsRoutes } from './songs/songs.routes.js';
 import { JsonFileManagerRoutes } from './googleApi/json-file-manager.routes';
 
@@ -11,7 +12,11 @@ const port = process.env['PORT'] || 3080;
 console.log('port', port)
 // carefull depending on what we compile the number of folder to go back might change
 const angularPath = path.resolve(__dirname, '../unobtainium');
-console.log('path', __dirname, angularPath)
+console.log('path', __dirname, angularPath);
+var files = fs.readdirSync(path.resolve(__dirname, ''));
+var files2 = fs.readdirSync(path.resolve(__dirname, '../'));
+var files3 = fs.readdirSync(path.resolve(__dirname, '../../'));
+console.log('directories', files, files2, files3);
 
 const bodyParser = require("body-parser");
 app.use(bodyParser.json());
