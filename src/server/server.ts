@@ -11,8 +11,8 @@ const app: express.Application = express();
 const port = process.env['PORT'] || 3080;
 console.log('port', port)
 // carefull depending on what we compile the number of folder to go back might change
-const angularPath = path.resolve(__dirname, '../unobtainium');
-console.log('path', __dirname, angularPath);
+const angularPath = path.resolve(__dirname, '../unobtainium/browser/');
+console.log('path', __dirname, angularPath, fs.existsSync(angularPath));
 var files = fs.readdirSync(path.resolve(__dirname, ''));
 var files2 = fs.readdirSync(path.resolve(__dirname, '../'));
 var files3 = fs.readdirSync(path.resolve(__dirname, '../../'));
