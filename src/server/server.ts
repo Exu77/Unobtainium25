@@ -10,8 +10,8 @@ const app: express.Application = express();
 const port = process.env['PORT'] || 3080;
 console.log('port', port)
 // carefull depending on what we compile the number of folder to go back might change
-const angularPath = path.resolve(__dirname, '../../angular-build');
-console.log('path', angularPath)
+const angularPath = path.resolve(__dirname, '../unobtainium');
+console.log('path', __dirname, angularPath)
 
 const bodyParser = require("body-parser");
 app.use(bodyParser.json());
