@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "node dist/server/server.js",
-    "serve": "ng serve",
+    "serve": "ng serve --configuration development",
     "build": "ng build --configuration production && tsc",
     "tsc": "tsc",
     "watch": "ng build --watch --configuration development",
