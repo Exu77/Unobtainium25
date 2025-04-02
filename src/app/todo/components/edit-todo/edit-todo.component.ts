@@ -57,7 +57,6 @@ export class EditTodoComponent implements OnInit{
   };
 
   ngOnInit(): void {
-    console.log('init', this.aTodo);
     this.form.get(this.fcSong)?.setValue(this.aTodo.song);
     this.form.get(this.fcDescription)?.setValue(this.aTodo.description);
     this.form.get(this.fcResponsible)?.setValue(this.aTodo.responsibles ?? []);

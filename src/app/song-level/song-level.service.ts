@@ -7,42 +7,55 @@ import { AuthenticationConstants } from '../../common/constants/authentication.c
 import { ErrorUtil } from '../util/error.util';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SongLevelService {
+  public readonly allSongLevelsIsLoading$ = new BehaviorSubject<boolean>(false);
+  public allSongLevels$ = new BehaviorSubject<SongLevel[]>([]);
+  constructor(private http: HttpClient) {}
 
-  public allTodos$: BehaviorSubject<SongLevel[]> = new BehaviorSubject<SongLevel[]>([]);
-  constructor(
-      private http: HttpClient,
-    ) { }
-
-  public getAll():void {
-      const url = `${environment.apiUrl}/${AuthenticationConstants.URL_API_SECURE}/song-level/getAll`;
-      this.http.get<SongLevel[]>(url)
-          .subscribe(todoList => {
-              this.allTodos$.next(todoList);
-          },
-          catchError(ErrorUtil.handleError<any>(url, null))
-      );
+  public getAll(): void {
+    this.allSongLevelsIsLoading$.next(true);
+    const url = `${environment.apiUrl}/${AuthenticationConstants.URL_API_SECURE}/song-level/getAll`;
+    this.http.get<SongLevel[]>(url).subscribe({
+      next: (todoList) => {
+        this.allSongLevels$.next(todoList);
+        this.allSongLevelsIsLoading$.next(false);
+      },
+      error: () => {
+        ErrorUtil.handleError<any>(url, null);
+        this.allSongLevelsIsLoading$.next(false);
+      },
+    });
   }
 
   public save(aObj: SongLevel): void {
-      const url = `${environment.apiUrl}/${AuthenticationConstants.URL_API_SECURE}/song-level/`;
-      this.http.post<SongLevel[]>(url, aObj)
-      .subscribe(todoList => {
-          this.allTodos$.next(todoList);
+    this.allSongLevelsIsLoading$.next(true);
+    const url = `${environment.apiUrl}/${AuthenticationConstants.URL_API_SECURE}/song-level/`;
+    this.http.post<SongLevel[]>(url, aObj).subscribe({
+      next: (todoList) => {
+        this.allSongLevels$.next(todoList);
+        this.allSongLevelsIsLoading$.next(false);
       },
-      catchError(ErrorUtil.handleError<any>(url, null))
-      );
+      error: () => {
+        ErrorUtil.handleError<any>(url, null);
+        this.allSongLevelsIsLoading$.next(false);
+      },
+    });
   }
 
   public delete(aObj: SongLevel): void {
-      const url = `${environment.apiUrl}/${AuthenticationConstants.URL_API_SECURE}/song-level/${aObj.id}`;
-      this.http.delete<SongLevel[]>(url)
-      .subscribe(todoList => {
-          this.allTodos$.next(todoList);
+    this.allSongLevelsIsLoading$.next(true);
+    const url = `${environment.apiUrl}/${AuthenticationConstants.URL_API_SECURE}/song-level/${aObj.id}`;
+    this.http.delete<SongLevel[]>(url).subscribe({
+      next: (todoList) => {
+        this.allSongLevels$.next(todoList);
+        this.allSongLevelsIsLoading$.next(false);
       },
-      catchError(ErrorUtil.handleError<any>(url, null))
-      );
+      error: () => {
+        ErrorUtil.handleError<any>(url, null);
+        this.allSongLevelsIsLoading$.next(false);
+      },
+    });
   }
 }
