@@ -4,8 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "node dist/server/server.js",
-    "serve": "ng serve",
-    "build": "ng build --prod && tsc",
+    "serve": "ng serve --configuration development",
+    "build": "ng build --configuration production && tsc",
     "tsc": "tsc",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
@@ -14,7 +14,8 @@
     "watch-node": "nodemon dist/server/server.js",
     "postinstall": "tsc",
     "dev": "concurrently \"tsc -w\" \"nodemon dist/server/server.js\"",
-    "watch-ts": "tsc -w"
+    "watch-ts": "tsc -w",
+    "heroku-postbuild": "ng build --configuration production && tsc"
   },
   "private": true,
   "dependencies": {

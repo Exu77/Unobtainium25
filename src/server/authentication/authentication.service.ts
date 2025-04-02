@@ -18,6 +18,7 @@ export class AuthenticationService {
             const { password, ...userWithoutPassword } = user;
             return userWithoutPassword;
         }
+        return null;
     }
 
     public basicAuth = async (req: any, res: any, next: any) => {
