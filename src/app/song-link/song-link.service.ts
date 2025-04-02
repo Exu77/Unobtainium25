@@ -7,42 +7,39 @@ import { AuthenticationConstants } from '../../common/constants/authentication.c
 import { ErrorUtil } from '../util/error.util';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SongLinkService {
+  public allUltimateGuitarLinks$ = new BehaviorSubject<SongLink[]>([]);
+  constructor(private http: HttpClient) {}
 
-  public allUltimateGuitarLinks$: BehaviorSubject<SongLink[]> = new BehaviorSubject<SongLink[]>([]);
-  constructor(
-      private http: HttpClient,
-    ) { }
-
-  public getAllLinks():void {
-      const url = `${environment.apiUrl}/${AuthenticationConstants.URL_API_SECURE}/song-link/getAll`;
-      this.http.get<SongLink[]>(url)
-          .subscribe(todoList => {
-              this.allUltimateGuitarLinks$.next(todoList);
-          },
-          catchError(ErrorUtil.handleError<any>(url, null))
-      );
+  public getAllLinks(): void {
+    const url = `${environment.apiUrl}/${AuthenticationConstants.URL_API_SECURE}/song-link/getAll`;
+    this.http.get<SongLink[]>(url).subscribe({
+      next: (todoList) => {
+        this.allUltimateGuitarLinks$.next(todoList);
+      },
+      error: () => ErrorUtil.handleError<any>(url, null),
+    });
   }
 
   public saveLink(aLink: SongLink): void {
-      const url = `${environment.apiUrl}/${AuthenticationConstants.URL_API_SECURE}/song-link/`;
-      this.http.post<SongLink[]>(url, aLink)
-      .subscribe(todoList => {
-          this.allUltimateGuitarLinks$.next(todoList);
+    const url = `${environment.apiUrl}/${AuthenticationConstants.URL_API_SECURE}/song-link/`;
+    this.http.post<SongLink[]>(url, aLink).subscribe({
+      next: (todoList) => {
+        this.allUltimateGuitarLinks$.next(todoList);
       },
-      catchError(ErrorUtil.handleError<any>(url, null))
-      );
+      error: () => ErrorUtil.handleError<any>(url, null),
+    });
   }
 
   public deleteLink(aLink: SongLink): void {
-      const url = `${environment.apiUrl}/${AuthenticationConstants.URL_API_SECURE}/song-link/${aLink.id}`;
-      this.http.delete<SongLink[]>(url)
-      .subscribe(todoList => {
-          this.allUltimateGuitarLinks$.next(todoList);
+    const url = `${environment.apiUrl}/${AuthenticationConstants.URL_API_SECURE}/song-link/${aLink.id}`;
+    this.http.delete<SongLink[]>(url).subscribe({
+      next: (todoList) => {
+        this.allUltimateGuitarLinks$.next(todoList);
       },
-      catchError(ErrorUtil.handleError<any>(url, null))
-      );
+      error: () => ErrorUtil.handleError<any>(url, null),
+    });
   }
 }

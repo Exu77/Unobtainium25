@@ -1,5 +1,5 @@
 <div class="app-link mt-2.5">
-    <h2 class="title-row flex justify-between cursor-pointer hover:font-bold" (click)="showData = !showData">
+    <h2 class="title-row flex justify-between cursor-pointer hover:font-bold" (click)="showData.set(!showData())">
         <div>
             Links
         </div>
@@ -9,17 +9,17 @@
             </div>
         </div>
     </h2>
-    <div class="link-group flex flex-wrap gap-4"  *ngIf="showData">
-        <div *ngFor="let aLink of filteredLinks">
-            <mat-card class="link-card w-fit cursor-pointer min-w-40" [class.do-hover]="mouseOverEnabled4Ctrl" (click)="openLink(aLink?.link)">
+    <div class="link-group flex flex-wrap gap-4"  *ngIf="showData()">
+        <div *ngFor="let aLink of (filteredLinks())">
+            <mat-card class="link-card w-fit cursor-pointer min-w-40" [class.do-hover]="mouseOverEnabled4Ctrl()" (click)="openLink(aLink?.link)">
                 <mat-card-content>
                     <div class="link-card-control mb-2 flex justify-around">
                         <button mat-mini-fab aria-label="edit"  (click)="openEditDialog(aLink, $event)" 
-                                (mouseenter)="mouseOverEnabled4Ctrl = false" (mouseleave)="mouseOverEnabled4Ctrl = true">
+                                (mouseenter)="mouseOverEnabled4Ctrl.set(false)" (mouseleave)="mouseOverEnabled4Ctrl.set(true)">
                             <div class="material-icons">edit</div>
                           </button>
                         <button mat-mini-fab aria-label="delete" (click)="openDeletetDialog(aLink, $event)" 
-                                (mouseenter)="mouseOverEnabled4Ctrl = false" (mouseleave)="mouseOverEnabled4Ctrl = true">
+                                (mouseenter)="mouseOverEnabled4Ctrl.set(false)" (mouseleave)="mouseOverEnabled4Ctrl.set(true)">
                             <div class="material-icons">delete</div>
                           </button>
                     </div>

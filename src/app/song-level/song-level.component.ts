@@ -17,10 +17,10 @@ export class SongLevelComponent {
   public songFolder = input<SongFolder>();
 
   public currentSongLevel: WritableSignal<SongLevel> = signal({});
-  public daysBetween: number = 999;
+  public daysBetween = signal(999);
 
   constructor(private readonly songLevelService: SongLevelService) { 
-    this.songLevelService.allTodos$.subscribe((songLevelList: SongLevel[]) => {
+    this.songLevelService.allSongLevels$.subscribe((songLevelList: SongLevel[]) => {
       const tempSl = songLevelList?.find(aSl => aSl?.song?.id === this.songFolder()?.id);
       if (tempSl) {
         this.currentSongLevel.set(tempSl);
@@ -68,9 +68,9 @@ export class SongLevelComponent {
 
   private calculateLastPlayed() {
     if (!this.currentSongLevel().playedLast) {
-      this.daysBetween = 999;
+      this.daysBetween.set(999);
     } else {
-      this.daysBetween = Util.getDaysBetween(new Date(), new Date(Date.parse(this.currentSongLevel().playedLast!)));
+      this.daysBetween.set(Util.getDaysBetween(new Date(), new Date(Date.parse(this.currentSongLevel().playedLast!))));
     }
 
 

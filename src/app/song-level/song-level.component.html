@@ -11,10 +11,10 @@
         </div>
     </div>
     <div class="last-played-group flex" 
-            [class.alert-medium]="daysBetween > 60 && daysBetween < 120"
-            [class.alert-red]="daysBetween >= 120"
+            [class.alert-medium]="daysBetween() > 60 && daysBetween() < 120"
+            [class.alert-red]="daysBetween() >= 120"
     >
-        <div class="last-played-text">{{daysBetween}}</div>
+        <div class="last-played-text">{{daysBetween()}}</div>
         <div class="material-icons" (click)="updateLastPlayed($event)">play_circle</div>
         <div class="material-icons" (click)="openDatePicer(picker, $event)">calendar_today</div>
         <mat-form-field style="width:1px;visibility:hidden;height:1px">

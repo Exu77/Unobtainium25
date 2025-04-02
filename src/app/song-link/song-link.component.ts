@@ -1,4 +1,10 @@
-import { Component, input, OnInit } from '@angular/core';
+import {
+  Component,
+  input,
+  OnInit,
+  signal,
+  WritableSignal,
+} from '@angular/core';
 import { SongFolder } from '../../common/types/song.type';
 import { SongLink } from '../../common/types/song-link.type';
 import { SongLinkService } from './song-link.service';
@@ -8,45 +14,47 @@ import { DeleteSongLinkComponent } from './components/delete-song-link/delete-so
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-song-link',
   imports: [CommonModule, MatCardModule, MatButtonModule, MatIconModule],
   templateUrl: './song-link.component.html',
-  styleUrl: './song-link.component.scss'
+  styleUrl: './song-link.component.scss',
 })
-export class SongLinkComponent  implements OnInit{
+export class SongLinkComponent implements OnInit {
   public songFolder = input.required<SongFolder>();
-  public showData = true;
-  public displayedColumns: string[] = ["song", "descr", "actions"];
-  public filteredLinks: SongLink[] = [];
-  public mouseOverEnabled4Ctrl = true;
+  public showData = signal(true);
+  public displayedColumns: string[] = ['song', 'descr', 'actions'];
+  public filteredLinks: WritableSignal<SongLink[]> = signal([]);
+  public mouseOverEnabled4Ctrl = signal(true);
 
-  private allLinks: SongLink[] = [];
+  private allLinks: WritableSignal<SongLink[]> = signal([]);
   constructor(
     private readonly songLinkService: SongLinkService,
-    public dialog: MatDialog,
+    public dialog: MatDialog
   ) {
     this.songLinkService.getAllLinks();
-   }
+  }
 
   ngOnInit(): void {
-    this.songLinkService.allUltimateGuitarLinks$.subscribe((inputLinkList: SongLink[]) => {
-      this.allLinks = inputLinkList;
-      this.filterLinks();
-      this.showData = this.filteredLinks.length > 0;
-    }); 
+    this.songLinkService.allUltimateGuitarLinks$.subscribe(
+      (inputLinkList: SongLink[]) => {
+        this.allLinks.set(inputLinkList);
+        this.filterLinks();
+        this.showData.set(this.filteredLinks().length > 0);
+      }
+    );
   }
 
   public openEditDialog(aLink: SongLink, event: any): void {
     const dialogRef = this.dialog.open(EditSongLinkComponent, {
       width: '80%',
-      data: aLink
+      data: aLink,
     });
 
     dialogRef.afterClosed().subscribe((result: SongLink) => {
-      if(result) {
+      if (result) {
         this.songLinkService.saveLink(result);
       }
     });
@@ -57,31 +65,32 @@ export class SongLinkComponent  implements OnInit{
   public openDeletetDialog(aLink: SongLink, event: any): void {
     const dialogRef = this.dialog.open(DeleteSongLinkComponent, {
       width: '80%',
-      data: aLink
+      data: aLink,
     });
 
     dialogRef.afterClosed().subscribe((result: SongLink) => {
-      if(result) {
+      if (result) {
         this.songLinkService.deleteLink(result);
       }
-      
     });
     event.stopPropagation();
   }
 
-  public openLink(aUrl: string | null|undefined): void {
+  public openLink(aUrl: string | null | undefined): void {
     if (!aUrl) {
       return;
     }
-    window.open(aUrl, "_blank");
+    window.open(aUrl, '_blank');
   }
 
   private filterLinks() {
-    this.filteredLinks = this.allLinks.filter(aLink => {
-      if (this.songFolder() && aLink.song?.id !== this.songFolder()?.id) {
-        return false;
-      }
-      return true;
-    });
+    this.filteredLinks.set(
+      this.allLinks().filter((aLink) => {
+        if (this.songFolder() && aLink.song?.id !== this.songFolder()?.id) {
+          return false;
+        }
+        return true;
+      })
+    );
   }
 }

@@ -1,29 +1,32 @@
 <div class="song p-5 bg-black rounded-2xl">
-    <div *ngIf="song?.imgUrl">
-      <img  [src]="song?.imgUrl"/>
+  @if (isLoading()) {
+    <div class="flex justify-evenly"><mat-spinner></mat-spinner></div>
+  } @else {
+    <div *ngIf="song()?.imgUrl">
+      <img  [src]="song()?.imgUrl"/>
     </div>
-    <div *ngIf="song?.description">
+    <div *ngIf="song()?.description">
       <h2 class=" mt-4 mb-2">Beschreibung:</h2>
-      {{song?.description}}
+      {{song()?.description}}
     </div>
   
   
-    <div *ngIf="song?.chordSheets?.length! > 0">
+    <div *ngIf="song()?.chordSheets?.length! > 0">
       <h2 class="song-part-title  mt-4 mb-2">Google Drive files:</h2>
-      <div class="file-list" *ngFor="let aFile of song?.chordSheets">
+      <div class="file-list" *ngFor="let aFile of song()?.chordSheets">
         <a  [href]="aFile.webViewLink" target="_blank">{{aFile.name}} ({{aFile.modifiedTime | date}})</a>
       </div>
     </div>
   
   
-    <div *ngIf="song?.recordings?.length! > 0">
+    <div *ngIf="song()?.recordings?.length! > 0">
       <h2 class="song-part-title mt-4 mb-2">Aufnahmen</h2>
-      <div class="audio-player" *ngFor="let aRec of song?.recordings">
+      <div class="audio-player" *ngFor="let aRec of song()?.recordings">
         <a [href]="aRec.webViewLink" target="_blank" class="audio-title">{{aRec.name}} ({{aRec.modifiedTime | date}})</a>
       </div>
     </div>
   
-    <!-- <div *ngIf="song?.tabs?.length">
+    <!-- <div *ngIf="song()?.tabs?.length">
       <h2 class="song-part-title">Tabulaturen</h2>
       <div *ngFor="let aTab of song?.tabs">
         <app-music-sheet [tabFile]="aTab"></app-music-sheet>
@@ -34,5 +37,6 @@
         <app-todo [songFolder]="songFolder()"></app-todo>
     </div>
     <app-song-link [songFolder]="songFolder()"></app-song-link>
-  </div>
+  }
+</div>
   

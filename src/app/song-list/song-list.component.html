@@ -16,8 +16,8 @@
                 <mat-expansion-panel  hideToggle>
                     <mat-expansion-panel-header>
                         <mat-panel-title class="justify-between">
-                        <div [matBadge]="todoCounter[aSong.id]" 
-                            [matBadgeHidden]="!todoCounter[aSong.id]" 
+                        <div [matBadge]="todoMap().get(aSong.id)" 
+                            [matBadgeHidden]="!todoMap().get(aSong.id)" 
                             [matBadgeOverlap]="false"
                             matBadgeSize="medium"
                             MatBadgePosition="after"
