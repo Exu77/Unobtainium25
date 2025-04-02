@@ -39,44 +39,11 @@ export class MainPageMembersComponent {
         )
       );
     });
-
-    this.todoService.allTodosIsLoading$.subscribe({
-      next: (value) => {
-        this.todoIsLoading = value;
-        this.isLoading.set(this.getIsLoading());
-      },
-    });
-
-    this.songFolderService.songFolderIsLoading$.subscribe({
-      next: (value) => {
-        this.songFolderIsLoading = value;
-        this.isLoading.set(this.getIsLoading());
-      },
-    });
-
-    this.songLevelService.allSongLevelsIsLoading$.subscribe({
-      next: (value) => {
-        this.songLevelIsLoading = value;
-        this.isLoading.set(this.getIsLoading());
-      },
-    });
   }
 
   public reload() {
-    console.log('reload')
     this.todoService.getTodos();
     this.songFolderService.getSongFolders();
     this.songLevelService.getAll();
-  }
-
-  private getIsLoading(): boolean {
-    console.log('blup', this.songFolderIsLoading,
-      this.songLevelIsLoading,
-      this.todoIsLoading)
-    return (
-      this.songFolderIsLoading ||
-      this.songLevelIsLoading ||
-      this.todoIsLoading
-    );
   }
 }
