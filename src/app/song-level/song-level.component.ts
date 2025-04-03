@@ -1,4 +1,4 @@
-import { Component, input, signal, WritableSignal } from '@angular/core';
+import { Component, input, OnInit, signal, WritableSignal } from '@angular/core';
 import { SongFolder } from '../../common/types/song.type';
 import { SongLevel } from '../../common/types/song-level.type';
 import { SongLevelService } from './song-level.service';
@@ -13,24 +13,20 @@ import { CommonModule } from '@angular/common';
   templateUrl: './song-level.component.html',
   styleUrl: './song-level.component.scss'
 })
-export class SongLevelComponent {
+export class SongLevelComponent implements OnInit {
   public songFolder = input<SongFolder>();
 
   public currentSongLevel: WritableSignal<SongLevel> = signal({});
   public daysBetween = signal(999);
 
+  private allLevels: SongLevel[] | null = null;
+
   constructor(private readonly songLevelService: SongLevelService) { 
+  }
+  ngOnInit(): void {
     this.songLevelService.allSongLevels$.subscribe((songLevelList: SongLevel[]) => {
-      const tempSl = songLevelList?.find(aSl => aSl?.song?.id === this.songFolder()?.id);
-      if (tempSl) {
-        this.currentSongLevel.set(tempSl);
-      } else {
-        this.currentSongLevel.set({
-          song: this.songFolder(),
-          proficiency: 0
-        });
-      }
-      this.calculateLastPlayed();
+      this.allLevels = songLevelList;
+      this.calculateLevel();
     });
   }
 
@@ -56,6 +52,23 @@ export class SongLevelComponent {
   public openDatePicer(picker: any, event: any) {
     picker.open();
     event.stopPropagation();
+  }
+
+  private calculateLevel() {
+    if (!this.songFolder() || !this.allLevels) {
+      return
+    }
+    const tempSl = this.allLevels?.find(aSl => aSl?.song?.id === this.songFolder()?.id);
+    
+      if (tempSl) {
+        this.currentSongLevel.set(tempSl);
+      } else {
+        this.currentSongLevel.set({
+          song: this.songFolder(),
+          proficiency: 0
+        });
+      }
+      this.calculateLastPlayed();
   }
 
   private updateDate(dateString: string): void {
