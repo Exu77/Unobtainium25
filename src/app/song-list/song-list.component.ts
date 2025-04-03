@@ -1,4 +1,4 @@
-import { Component, signal, WritableSignal } from '@angular/core';
+import { Component, OnInit, signal, WritableSignal } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
 import { SongFolder } from '../../common/types/song.type';
 import { combineLatest, combineLatestWith, map, Subscription } from 'rxjs';
@@ -34,7 +34,7 @@ import { TodoComponent } from '../todo/todo.component';
   templateUrl: './song-list.component.html',
   styleUrl: './song-list.component.scss',
 })
-export class SongListComponent {
+export class SongListComponent implements OnInit{
   public filteredSongs: WritableSignal<SongFolder[]> = signal([]);
   public isLoading = signal(true);
 
@@ -42,8 +42,6 @@ export class SongListComponent {
   public mode: ProgressSpinnerMode = 'determinate';
   public todoMap: WritableSignal<Map<string, number>> = signal(new Map());
   public searchTerm = signal('');
-
-  private songSubscription: Subscription;
   private allSongs: WritableSignal<SongFolder[]> = signal([]);
 
   constructor(
@@ -51,6 +49,8 @@ export class SongListComponent {
     private readonly songFolderService: SongListService,
     private readonly songLevelService: SongLevelService
   ) {
+  }
+  ngOnInit(): void {
     combineLatest([
       this.songFolderService.songFolderIsLoading$,
       this.songLevelService.allSongLevelsIsLoading$,
@@ -63,12 +63,11 @@ export class SongListComponent {
               result = true;
             }
           });
-          console.log('blup', arr, result);
           return result;
         })
       )
       .subscribe((value) => this.isLoading.set(value));
-    this.songSubscription = this.songFolderService.songFolderList$.subscribe(
+     const songSubscription = this.songFolderService.songFolderList$.subscribe(
       (songFolders) => {
         this.allSongs.set(songFolders);
         this.filterSongs();
