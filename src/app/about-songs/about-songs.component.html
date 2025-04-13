@@ -1,0 +1,12 @@
+<div class="flex flex-col items-center text-center">
+  @for (song of songs(); track song.id) {
+    <div class="w-9/10 lg:w-1/2 mb-5">
+      <mat-card>
+        <div class="text-center my-3">
+          <mat-card-title>{{ song.title }}</mat-card-title>
+        </div>
+        <mat-card-content>{{ song.description }}</mat-card-content>
+      </mat-card>
+    </div>
+  }
+</div>

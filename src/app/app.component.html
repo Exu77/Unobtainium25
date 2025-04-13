@@ -10,6 +10,10 @@
       </button>
     </div>
     <mat-menu #menu="matMenu">
+      <button mat-menu-item [routerLink]="['/about-songs']">
+        <mat-icon>music_note</mat-icon>
+        <span>Über die Songs</span>
+      </button>
       <button mat-menu-item>
         <mat-icon>email</mat-icon>
         <span><a href="mailto:band@unobtainium.li">Kontakt</a></span>
@@ -19,7 +23,9 @@
         <span>Band-Bereich</span>
       </button>
     </mat-menu>
-    <div class="title" routerLink="/">UNOBTAINIUM</div>
+    <div class="flex flex-col items-center text-center">
+      <span class="title" routerLink="/">UNOBTAINIUM</span>
+    </div>
   </div>
 
   <router-outlet></router-outlet>
