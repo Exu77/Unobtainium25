@@ -1,19 +1,26 @@
 <div class="app">
-  <div class="menuPane">
-    <div>
-      <a href="mailto:band@unobtainium.li"><span class="menu-item clickable material-icons">
-        email
-        </span></a>
+  <div class="titlePane">
+    <div class="right">
+      <button
+        mat-icon-button
+        [matMenuTriggerFor]="menu"
+        aria-label="Example icon-button with a menu"
+      >
+        <mat-icon>more_vert</mat-icon>
+      </button>
     </div>
-    <div class="menu-item titlePane"  routerLink="/">
-      <span class="title"> UNOBTAINIUM</span>
-    </div>
-    <div class="menuItem" [routerLink]="['/song-list']">
-      Mitglieder
-    </div>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <mat-icon>email</mat-icon>
+        <span><a href="mailto:band@unobtainium.li">Kontakt</a></span>
+      </button>
+      <button mat-menu-item [routerLink]="['/song-list']">
+        <mat-icon>groups</mat-icon>
+        <span>Band-Bereich</span>
+      </button>
+    </mat-menu>
+    <div class="title" routerLink="/">UNOBTAINIUM</div>
   </div>
-  
-  
-  <!-- The routed views render in the <router-outlet>-->
+
   <router-outlet></router-outlet>
 </div>
