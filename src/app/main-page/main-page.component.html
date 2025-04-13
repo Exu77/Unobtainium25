@@ -1,77 +1,142 @@
 <div class="main-page flex justify-center items-center">
-    <div class="container w-9/10 lg:w-1/2 flex flex-col items-center" >
-        <div  class="tile-content">
-            <mat-card>
-                <mat-card-header>
-                    <mat-card-title>BAND</mat-card-title>
-                </mat-card-header>
-                <mat-card-content>
-                    <div class="card-content">Unobtainium ist eine Pop/Rock Band aus Liechtenstein</div>
-                    <!--<div class="card-content"><img class="width: 468px" src="../assets/imgs/cover.jpg"/></div>-->
-                    <div class="card-content">Es singt und spielt an der Rhytmus-Gitarre Simon Meier, an der Lead-Gitarre Christian Gloor, am Bass Biedermann und am Schlagzeug Richard Clair.</div>
-                </mat-card-content>
-            </mat-card>
-        </div> 
-        <div  class="tile-content">
-            <mat-card   >
-                <mat-card-header>
-                    <mat-card-title>Facebook</mat-card-title>
-                </mat-card-header>
-                <mat-card-content>
-                    <div class="card-content">
-                        <div ng-if="pluginOn" onrender="rendered()" 
-                                class="fb-page" data-href="https://www.facebook.com/unobtainium.li" 
-                                data-width="500px" 
-                                data-height="400px"
-                                data-small-header="true"  
-                                data-adapt-container-width="false" 
-                                data-hide-cover="true" 
-                                data-show-facepile="false" 
-                                data-show-posts="true">
-                            <blockquote cite="https://www.facebook.com/unobtainium.li/" class="fb-xfbml-parse-ignore">
-                                <a href="https://www.facebook.com/unobtainium.li/">Unobtainium</a>
-                            </blockquote>
-                        </div>
-                    </div>
-                </mat-card-content>
-            </mat-card>
-        </div>
-        <div  class="tile-content">
-            <mat-card   >
-                <mat-card-header>
-                    <mat-card-title>Spotify</mat-card-title>
-                </mat-card-header>
-                <mat-card-content>
-                    <div class="card-content">Unobtainium spielt eigen geschriebene Songs,<br/> sie stammen aus der Feder von Sänger und Gitarrist Simon Meier.</div>
-                    <div class="card-content">
-                        <iframe src="https://open.spotify.com/embed/artist/68Aocg9tsVPiA57r8Illbz?theme=0" width="500px" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-                    </div>
-                </mat-card-content>
-            </mat-card>
-        </div>
-        <div  class="tile-content">
-            <mat-card   >
-                <mat-card-header>
-                    <mat-card-title>Die neusten Youtube videos</mat-card-title>
-                </mat-card-header>
-                <mat-card-content>
-                    <div class="card-content">
-                        <iframe width="500" height="315" src="https://www.youtube.com/embed/videoseries?list=PLfSayz4JOkZgXUoe-cFa4sn836n19mJMj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                </mat-card-content>
-            </mat-card>
-        </div>
-        <div  class="tile-content">
-            <mat-card   >
-                <mat-card-header>
-                    <mat-card-title>FL1 Contest 2018</mat-card-title>
-                </mat-card-header>
-                <mat-card-content>
-                    <div class="card-content">
-                        <iframe width="500  " height="315" src="https://www.youtube.com/embed/videoseries?list=PLfSayz4JOkZjBALOnhcdCUnpiefNDKX_J" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                </mat-card-content>
-            </mat-card>
-        </div>
+  <div class="container w-9/10 lg:w-1/2 flex flex-col items-center">
+    <div class="tile-content">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>BAND</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="card-content">
+            Unobtainium ist eine Pop/Rock Band aus Liechtenstein
+          </div>
+          <!--<div class="card-content"><img class="width: 468px" src="../assets/imgs/cover.jpg"/></div>-->
+          <div class="card-content">
+            Es singt und spielt an der Rhytmus-Gitarre Simon Meier, an der
+            Lead-Gitarre Christian Gloor, am Bass Biedermann und am Schlagzeug
+            Richard Clair.
+          </div>
+        </mat-card-content>
+      </mat-card>
     </div>
+    <div class="tile-content">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Facebook</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <!-- New Facebook Plugin has to be added-->
+          @if (!isSmallScreen) {
+            <div class="card-content">
+              <div
+                class="fb-page"
+                data-href="https://www.facebook.com/unobtainium.li"
+                data-width="500px"
+                data-height="400px"
+                data-small-header="true"
+                data-adapt-container-width="false"
+                data-hide-cover="true"
+                data-show-facepile="false"
+                data-show-posts="true"
+              >
+                <blockquote
+                  cite="https://www.facebook.com/unobtainium.li/"
+                  class="fb-xfbml-parse-ignore"
+                >
+                  <a href="https://www.facebook.com/unobtainium.li/"
+                    >Unobtainium</a
+                  >
+                </blockquote>
+              </div>
+            </div>
+          } @else {
+            <div class="card-content">
+              <div
+                class="fb-page"
+                data-href="https://www.facebook.com/unobtainium.li"
+                data-width="290px"
+                data-height="400px"
+                data-small-header="true"
+                data-adapt-container-width="false"
+                data-hide-cover="true"
+                data-show-facepile="false"
+                data-show-posts="true"
+              >
+                <blockquote
+                  cite="https://www.facebook.com/unobtainium.li/"
+                  class="fb-xfbml-parse-ignore"
+                >
+                  <a href="https://www.facebook.com/unobtainium.li/"
+                    >Unobtainium</a
+                  >
+                </blockquote>
+              </div>
+            </div>
+          }
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="tile-content">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Spotify</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="card-content">
+            Unobtainium spielt eigen geschriebene Songs,<br />
+            sie stammen aus der Feder von Sänger und Gitarrist Simon Meier.
+          </div>
+          <div class="card-content">
+            <iframe
+              src="https://open.spotify.com/embed/artist/68Aocg9tsVPiA57r8Illbz?theme=0"
+              width="500px"
+              height="380"
+              frameBorder="0"
+              allowtransparency="true"
+              allow="encrypted-media"
+            ></iframe>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="tile-content">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Die neusten Youtube videos</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="card-content">
+            <iframe
+              width="500"
+              height="315"
+              src="https://www.youtube.com/embed/videoseries?list=PLfSayz4JOkZgXUoe-cFa4sn836n19mJMj"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="tile-content">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>FL1 Contest 2018</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="card-content">
+            <iframe
+              width="500  "
+              height="315"
+              src="https://www.youtube.com/embed/videoseries?list=PLfSayz4JOkZjBALOnhcdCUnpiefNDKX_J"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
 </div>
