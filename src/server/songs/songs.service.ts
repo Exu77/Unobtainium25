@@ -84,14 +84,17 @@ class SongsService {
           || aFile.mimeType === GoogleFileType.GOOGLE_DOC
           || aFile.mimeType === GoogleFileType.PNG
           || aFile.mimeType === GoogleFileType.JPEG
-          || aFile.mimeType === GoogleFileType.GIF) {
+          || aFile.mimeType === GoogleFileType.GIF
+          || aFile.mimeType === 'text/plain') {
           songObj.chordSheets?.push(aFile);
         } else if (aFile.mimeType === GoogleFileType.GUITAR_PRO || aFile.mimeType === GoogleFileType.ZIP) {
           songObj.tabs?.push(aFile);
         } else if (aFile.mimeType === GoogleFileType.AUDIO_MP3 
             || aFile.mimeType === GoogleFileType.AUDIO_M4A 
             || aFile.mimeType === GoogleFileType.AUDIO_OGG 
-            || aFile.mimeType === GoogleFileType.AUDIO_MPEG) {
+            || aFile.mimeType === GoogleFileType.AUDIO_MPEG
+            || aFile.mimeType === 'audio/wav'
+            || aFile.mimeType === 'audio/x-wav') {
           songObj.recordings?.push(aFile);
         } else {
           if (aFile.mimeType === GoogleFileType.FOLDER || aFile.mimeType === GoogleFileType.JSON || aFile.name === '.env') {
