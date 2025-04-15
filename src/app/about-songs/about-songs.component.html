@@ -1,11 +1,25 @@
 <div class="flex flex-col items-center text-center">
+  <div class="text-3xl mb-5">Über unsere Songs</div>
   @for (song of songs(); track song.id) {
-    <div class="w-9/10 lg:w-1/2 mb-5">
+    <div class="w-9/10 lg:w-1/2 mb-10">
       <mat-card>
         <div class="text-center my-3">
           <mat-card-title>{{ song.title }}</mat-card-title>
         </div>
-        <mat-card-content>{{ song.description }}</mat-card-content>
+        @if (song.youtubeLink) {
+          <div class="flex justify-center mb-4">
+            <iframe
+              width="560"
+              height="315"
+              [src]="song.youtubeLink | safe"
+              title="YouTube video player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
+          </div>
+        }
+        <mat-card-content [innerHTML]="song.description"></mat-card-content>
       </mat-card>
     </div>
   }
