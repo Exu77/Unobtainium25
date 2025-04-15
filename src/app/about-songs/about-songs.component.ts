@@ -44,12 +44,13 @@ export class AboutSongsComponent {
         title: 'Gone',
         description:
           '"Gone" handelt von einer verflossenen Liebe. Das Lied ist 2014 nach einer heftigen Zeit der Trauer und Depression entstanden.' +
-          ' Es ist ein sehr persönliches Lied, das die Trauer und den Schmerz über den Verlust einer geliebten Frau beschreibt. Im Nachhinein' +
-          ' war es für mich sein sehr wichtiges Lied, um die Trauer zu verarbeiten. Ich bin dankbar, dass ich es schreiben konnte und es mit meiner Band spielen darf.' +
+          ' Es ist ein sehr persönliches Lied, das die Trauer und den Schmerz über den Verlust einer geliebten Frau beschreibt. "Im Nachhinein' +
+          ' war es für mich ein sehr wichtiges Lied, um die Trauer zu verarbeiten. Ich bin dankbar, dass ich es schreiben konnte und es mit meiner Band spielen darf.' +
           ' Ich bin sehr dankbar, mit jener Frau aus Luzern für eine wichtige Zeit in meinem Leben zusammen gewesen sein zu dürfen und dass sie mir verziehen hat.' +
           ' Ich bin mir sicher, dass es ihr gut geht und sie glücklich ist.' +
           ' Sehr dankbar bin ich, dass ich meine Frau gefunden habe, die mir alles bedeutet, die ich über alles Liebe und mir unseren tollen Sohn geschenkt hat.' +
-          ' Sie hat viel Verständnis für dieses Lied aufgebracht und gar für die Produktion beigetragen. Danke Dir mein Schatz. Vielleicht kann ich mit diesem Lied auch anderen Menschen etwas helfen, die ebenfalls mal eine schwere Zeit durchleben mussten.' +
+          ' Sie hat viel Verständnis für dieses Lied aufgebracht und gar für die Produktion beigetragen. Danke Dir mein Schatz. Vielleicht kann ich mit diesem Lied auch anderen Menschen etwas helfen, die ebenfalls mal eine schwere Zeit durchleben mussten", ' +
+          ' schreibt Simon.' +
           ' Das Lied wurde im <a href="https://www.sae.edu/che/"><u>SAE Institute Zürich</u></a> in Zürich aufgenommen und auch von <a href="https://www.instagram.com/fl.gatsby/"><u>Noah Ospelt</u></a> produziert.' +
           ' Geschrieben von und Copyright: <a href="https://simonmeier.li/about-me/music/"><u>Simon Meier</u></a>.',
         youtubeLink:
