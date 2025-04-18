@@ -29,6 +29,7 @@
     "@angular/platform-browser-dynamic": "^19.2.5",
     "@angular/router": "^19.2.5",
     "@tailwindcss/postcss": "^4.0.12",
+    "codelyzer": "^6.0.2",
     "cors": "^2.8.5",
     "express": "^4.21.2",
     "fs": "^0.0.1-security",

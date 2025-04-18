@@ -6,13 +6,17 @@
         [matMenuTriggerFor]="menu"
         aria-label="Example icon-button with a menu"
       >
-        <mat-icon>more_vert</mat-icon>
+        <mat-icon class="icon-size">menu</mat-icon>
       </button>
     </div>
     <mat-menu #menu="matMenu">
       <button mat-menu-item [routerLink]="['/about-songs']">
         <mat-icon>music_note</mat-icon>
         <span>Über die Songs</span>
+      </button>
+      <button mat-menu-item [routerLink]="['/about-band']">
+        <mat-icon>emoji_people</mat-icon>
+        <span>Über die Band</span>
       </button>
       <button mat-menu-item>
         <mat-icon>email</mat-icon>
