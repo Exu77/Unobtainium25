@@ -8,9 +8,8 @@ describe('AboutBandComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AboutBandComponent]
-    })
-    .compileComponents();
+      imports: [AboutBandComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(AboutBandComponent);
     component = fixture.componentInstance;
