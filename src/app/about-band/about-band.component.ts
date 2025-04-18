@@ -41,14 +41,14 @@ export class AboutBandComponent {
         id: 3,
         name: 'Richard Clare',
         role: 'Schlagzeuger',
-        imageUrl: 'https://example.com/simon.jpg',
+        imageUrl: '',
         bio: 'Richi ist der Schlagzeuger der Band.',
       },
       {
         id: 4,
         name: 'Dieter Biedermann',
         role: 'Bassist',
-        imageUrl: 'https://example.com/simon.jpg',
+        imageUrl: '',
         bio: 'Dieter ist der Bassist der Band.',
       },
     ]);
