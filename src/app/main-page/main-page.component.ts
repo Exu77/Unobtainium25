@@ -1,14 +1,18 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit, signal } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
+import { SafePipe } from '../pipes/safe.pipe';
 declare var FB: any;
 @Component({
   selector: 'app-main-page',
-  imports: [MatCardModule],
+  imports: [MatCardModule, SafePipe],
   templateUrl: './main-page.component.html',
   styleUrl: './main-page.component.scss',
 })
 export class MainPageComponent implements OnInit {
-  isSmallScreen: boolean = false;
+  public isSmallScreen = false;
+  public latestYoutubeLink = signal(
+    'https://www.youtube.com/embed/xa4d1rao8GQ?si=WifFDe7udqQz7D0J',
+  );
 
   ngOnInit(): void {
     this.checkScreenSize();
