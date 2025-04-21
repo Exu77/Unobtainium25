@@ -14,15 +14,41 @@
           />
           @if (member.imageCopyRight) {
             <div class="text-sm italic text-gray-500 mb-3">
-              Foto & Copyright: {{ member.imageCopyRight }}
+              Photo & Copyright: {{ member.imageCopyRight }}
             </div>
           }
         }
         <mat-card-content
-          class="text-center"
+          class="text-center text-justify"
           [innerHTML]="member.bio"
         ></mat-card-content>
       </mat-card>
     </div>
   }
+  <div class="text-3xl mt-10 mb-10">Band Coach</div>
+  <div class="w-9/10 lg:w-1/2 mb-10">
+    <mat-card>
+      <div class="text-center my-3">
+        <mat-card-title>Wolfgang Vetsch</mat-card-title>
+      </div>
+      <img
+        [src]="'assets/images/wolfgang.jpg'"
+        alt="Band Member Image"
+        class="max-h-96 w-auto object-contain mb-5"
+      />
+      <div class="text-sm italic text-gray-500 mb-3">
+        Photo & Copyright:
+        <a href="http://www.wolfgangvetsch.li">Wolfgang Vetsch</a>
+      </div>
+
+      <mat-card-content
+        class="text-center text-justify"
+        [innerHTML]="
+          'Wolfang Vetsch ist unser Band-Coach. Er ist ein bekannter liechtensteinischer Musiker, Komponist, Gitarren-Lehrer und Ensemblen-Coach ' +
+          'der liechtensteinischen Musikschule. Er spielt in diversen Bands wie z.B. Rääs, Royal Funk Force und seiner eigenen Band Bluewater. ' +
+          '2022 releaste er sein Album \'Rewired\'. Seit einigen Jahren unterstützt er uns mit seinem musikalischen Können, seinem Wissen und Ideen.'
+        "
+      ></mat-card-content>
+    </mat-card>
+  </div>
 </div>
